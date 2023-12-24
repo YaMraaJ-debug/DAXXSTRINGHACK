@@ -18,9 +18,7 @@ usersdb = mongodb.tgusersdb
 # All Served Users
 async def is_served_user(user_id: int) -> bool:
     user = await usersdb.find_one({"user_id": user_id})
-    if not user:
-        return False
-    return True
+    return bool(user)
 
 
 async def get_served_users() -> list:
@@ -47,9 +45,7 @@ async def get_served_chats() -> list:
 
 async def is_served_chat(chat_id: int) -> bool:
     chat = await chatsdb.find_one({"chat_id": chat_id})
-    if not chat:
-        return False
-    return True
+    return bool(chat)
 
 
 async def add_served_chat(chat_id: int):
