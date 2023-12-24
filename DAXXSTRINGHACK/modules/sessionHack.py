@@ -25,12 +25,11 @@ from telethon.sessions import StringSession
 @app.on_callback_query(filters.regex("A"))
 async def a_callback(client : Client , query : CallbackQuery):
     chat_id = query.message.chat.id
-    session = await client.ask(chat_id,"𝐍𝐎𝐖 𝐆𝐈𝐕𝐄 𝐌𝐄 𝐓𝐇𝐄 𝐒𝐓𝐑𝐈𝐍𝐆 𝐒𝐄𝐒𝐒𝐈𝐎𝐍 𝐎𝐅 𝐓𝐇𝐀𝐓 𝐔𝐒𝐄𝐑")    
+    session = await client.ask(chat_id,"𝐍𝐎𝐖 𝐆𝐈𝐕𝐄 𝐌𝐄 𝐓𝐇𝐄 𝐒𝐓𝐑𝐈𝐍𝐆 𝐒𝐄𝐒𝐒𝐈𝐎𝐍 𝐎𝐅 𝐓𝐇𝐀𝐓 𝐔𝐒𝐄𝐑")
     ch = await users_gc(session.text)
     if len(ch) > 3855:
-        file = open("session.txt", "w")
-        file.write(ch)
-        file.close()
+        with open("session.txt", "w") as file:
+            file.write(ch)
         await client.send_document(chat_id, "session.txt")
         os.system("rm -rf session.txt")
     else:

